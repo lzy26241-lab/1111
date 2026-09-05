@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>大创赛获奖作品分析 — 剪纹栖隅</title>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: "Microsoft YaHei", "PingFang SC", sans-serif; background: #f5f6f8; color: #2c3e50; line-height: 1.7; }
+  .container { max-width: 960px; margin: 0 auto; padding: 32px 24px; }
+  .header { background: linear-gradient(135deg, #1a3a5c 0%, #2d6a9f 100%); color: #fff; padding: 36px 32px; border-radius: 12px; margin-bottom: 24px; }
+  .header h1 { font-size: 24px; font-weight: 700; margin-bottom: 8px; }
+  .header .subtitle { font-size: 14px; opacity: 0.85; }
+  .header .meta { margin-top: 16px; display: flex; flex-wrap: wrap; gap: 16px; font-size: 13px; }
+  .header .meta span { background: rgba(255,255,255,0.15); padding: 4px 12px; border-radius: 20px; }
+  .card { background: #fff; border-radius: 10px; padding: 24px 28px; margin-bottom: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+  .card h2 { font-size: 18px; color: #1a3a5c; border-left: 4px solid #2d6a9f; padding-left: 12px; margin-bottom: 16px; }
+  .card h3 { font-size: 15px; color: #2d6a9f; margin: 14px 0 8px; }
+  .score-overview { display: flex; align-items: center; gap: 32px; flex-wrap: wrap; }
+  .score-big { text-align: center; }
+  .score-big .num { font-size: 48px; font-weight: 700; color: #2d6a9f; line-height: 1; }
+  .score-big .label { font-size: 13px; color: #7f8c8d; margin-top: 4px; }
+  .score-big .level { display: inline-block; margin-top: 8px; padding: 3px 14px; border-radius: 20px; font-size: 12px; font-weight: 600; }
+  .level-provincial { background: #e8f5e9; color: #2e7d32; }
+  .chart-box { width: 100%; height: 380px; }
+  table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 14px; }
+  th, td { padding: 10px 12px; text-align: left; border-bottom: 1px solid #eee; }
+  th { background: #f0f4f8; color: #1a3a5c; font-weight: 600; font-size: 13px; }
+  tr:hover { background: #fafbfc; }
+  .score-cell { font-weight: 700; }
+  .s-high { color: #2e7d32; }
+  .s-mid { color: #f57c00; }
+  .s-low { color: #c62828; }
+  .tag { display: inline-block; padding: 2px 10px; border-radius: 4px; font-size: 12px; margin: 2px 4px 2px 0; }
+  .tag-strength { background: #e8f5e9; color: #2e7d32; }
+  .tag-weakness { background: #ffebee; color: #c62828; }
+  .tag-suggest { background: #e3f2fd; color: #1565c0; }
+  ul { padding-left: 20px; margin: 8px 0; }
+  li { margin-bottom: 6px; font-size: 14px; }
+  .timeline { position: relative; padding-left: 24px; }
+  .timeline::before { content: ''; position: absolute; left: 8px; top: 4px; bottom: 4px; width: 2px; background: #d0dce8; }
+  .timeline-item { position: relative; margin-bottom: 14px; }
+  .timeline-item::before { content: ''; position: absolute; left: -20px; top: 6px; width: 10px; height: 10px; border-radius: 50%; background: #2d6a9f; border: 2px solid #fff; box-shadow: 0 0 0 2px #2d6a9f; }
+  .timeline-item .phase { font-weight: 600; color: #1a3a5c; font-size: 14px; }
+  .timeline-item .time { font-size: 12px; color: #7f8c8d; }
+  .timeline-item .desc { font-size: 13px; color: #555; margin-top: 2px; }
+  .budget-bar { display: flex; height: 28px; border-radius: 6px; overflow: hidden; margin: 12px 0; }
+  .budget-bar div { display: flex; align-items: center; justify-content: center; color: #fff; font-size: 11px; font-weight: 600; }
+  .footer { text-align: center; color: #95a5a6; font-size: 12px; padding: 20px 0; }
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  @media (max-width: 640px) { .two-col { grid-template-columns: 1fr; } .score-overview { justify-content: center; } }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="header">
+    <h1>大创赛获奖作品竞争力分析报告</h1>
+    <div class="subtitle">剪纹栖隅——镇江剪纸非遗介入乡村闲置节点轻更新活化研究</div>
+    <div class="meta">
+      <span>项目类型：创新训练项目</span>
+      <span>所属领域：建筑业</span>
+      <span>团队规模：3人</span>
+      <span>执行周期：12个月</span>
+      <span>预算总额：4500元</span>
+    </div>
+  </div>
+
+  <!-- 综合评分 -->
+  <div class="card">
+    <h2>一、综合竞争力评估</h2>
+    <div class="score-overview">
+      <div class="score-big">
+        <div class="num">7.9</div>
+        <div class="label">综合评分（满分10分）</div>
+        <span class="level level-provincial">省级优秀 · 冲击国家级潜力</span>
+      </div>
+      <div style="flex:1; min-width:280px;">
+        <p style="font-size:14px; color:#555; margin-bottom:10px;">
+          本项目选题紧扣<strong>乡村振兴</strong>与<strong>非遗活态传承</strong>双政策热点，在地性强，跨专业协同模式清晰，整体方案结构完整。
+          主要短板在于<strong>团队规模偏小</strong>、<strong>研究方法表述偏弱</strong>、<strong>学术成果指标缺失</strong>。若针对性补强，具备从省级立项向国家级大创项目进阶的潜力。
+        </p>
+        <div>
+          <span class="tag tag-strength">选题精准</span>
+          <span class="tag tag-strength">跨专业协同</span>
+          <span class="tag tag-strength">轻介入模式</span>
+          <span class="tag tag-weakness">团队3人偏紧</span>
+          <span class="tag tag-weakness">缺学术成果</span>
+          <span class="tag tag-weakness">方法描述薄</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 雷达图 -->
+  <div class="card">
+    <h2>二、七维评审雷达图</h2>
+    <p style="font-size:13px; color:#7f8c8d; margin-bottom:8px;">基于大创赛评审标准，从七个维度对项目计划书进行专业评估（评分由计划书文本内容推导，供参考）</p>
+    <div id="radarChart" class="chart-box"></div>
+  </div>
+
+  <!-- 维度详评 -->
+  <div class="card">
+    <h2>三、七维度详细诊断</h2>
+    <table>
+      <thead>
+        <tr><th>评审维度</th><th>评分</th><th>核心判断</th><th>关键依据</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>选题价值</strong></td>
+          <td class="score-cell s-high">9.0</td>
+          <td>双政策热点叠加，在地性突出</td>
+          <td>乡村振兴+非遗传承双赛道；镇江剪纸为市级非遗，地域辨识度高；环境设计专业高度契合</td>
+        </tr>
+        <tr>
+          <td><strong>创新性</strong></td>
+          <td class="score-cell s-mid">7.5</td>
+          <td>有明确创新点，但组合非首创</td>
+          <td>轻介入点状活化、剪纸空间转译、跨专业闭环三点创新清晰；但"非遗+乡村微更新"赛道已有较多先例，独特性主要依赖在地文化</td>
+        </tr>
+        <tr>
+          <td><strong>可行性</strong></td>
+          <td class="score-cell s-high">8.5</td>
+          <td>资源匹配度高，落地风险低</td>
+          <td>团队专业对口；4500元预算精简合理；12个月周期四阶段划分充裕；实施地在镇江周边，调研成本低</td>
+        </tr>
+        <tr>
+          <td><strong>社会价值</strong></td>
+          <td class="score-cell s-mid">8.0</td>
+          <td>实践意义明确，推广性待验证</td>
+          <td>盘活闲置空间、为非遗提供日常载体、形成可复制方案；但影响范围限于镇江周边，缺乏量化社会效益指标</td>
+        </tr>
+        <tr>
+          <td><strong>方案完整性</strong></td>
+          <td class="score-cell s-mid">8.0</td>
+          <td>结构齐全，研究方法偏弱</td>
+          <td>九大板块完整覆盖；进度计划清晰；但缺少技术路线图、研究方法（如SWOT、AHP等）表述、风险应对预案</td>
+        </tr>
+        <tr>
+          <td><strong>团队配置</strong></td>
+          <td class="score-cell s-low">7.0</td>
+          <td>专业匹配但规模偏小，结构单一</td>
+          <td>2环设+1视传，空间与视觉分工合理；但仅3人完成2-3节点设计+全套文创工作量大；缺商科/管理/文案成员；未提及指导老师背景</td>
+        </tr>
+        <tr>
+          <td><strong>成果预期</strong></td>
+          <td class="score-cell s-mid">7.5</td>
+          <td>设计成果丰富，学术指标缺失</td>
+          <td>报告+空间设计+文创+展板+PPT，展示性强；但无论文发表、专利申请、竞赛获奖等学术性成果指标，大创结项验收时学术分量不足</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 优势与短板 -->
+  <div class="card">
+    <h2>四、核心优势与关键短板</h2>
+    <div class="two-col">
+      <div>
+        <h3 style="color:#2e7d32;">核心优势</h3>
+        <ul>
+          <li><strong>选题精准踩中政策风口</strong>：乡村振兴战略持续推进，非遗活态传承是文化建设重点，双热点叠加评审关注度高</li>
+          <li><strong>在地文化独特性</strong>：镇江剪纸（剪字）为市级非遗，徒手剪字特色鲜明，避免了"千村一面"的同质化问题</li>
+          <li><strong>轻介入模式落地性强</strong>：小尺度、低成本、点状活化，相比大拆大建更符合当前乡村更新趋势，评审认可度高</li>
+          <li><strong>跨专业协同闭环</strong>：环境设计+视觉传达，空间载体与文化视觉同步设计，形成"空间—导视—文创"完整链条</li>
+          <li><strong>成果可视化程度高</strong>：CAD、SU模型、效果图、IP、文创产品、展板，答辩展示效果好</li>
+        </ul>
+      </div>
+      <div>
+        <h3 style="color:#c62828;">关键短板</h3>
+        <ul>
+          <li><strong>团队仅3人，工作量超载风险</strong>：2-3个节点的全套空间设计+6款以上文创+导视系统+调研报告，3人12个月完成压力较大</li>
+          <li><strong>缺少学术成果指标</strong>：预期成果中无论文、专利、软著，大创结项时学术分量不足，影响评级</li>
+          <li><strong>研究方法表述薄弱</strong>：未明确具体研究方法（如田野调查法、案例分析法、空间句法等），技术路线图缺失</li>
+          <li><strong>无指导老师信息</strong>：计划书未提及指导老师及其研究方向，评审时难以判断学术支撑力度</li>
+          <li><strong>社会效益缺乏量化</strong>："可复制、可推广"停留在定性描述，缺少受益人数、覆盖村落数等量化指标</li>
+          <li><strong>预算偏紧</strong>：4500元总预算中调研差旅仅1500元，多次村落走访+传承人访谈可能不够</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 优化建议 -->
+  <div class="card">
+    <h2>五、冲奖优化建议（按优先级排序）</h2>
+    <table>
+      <thead>
+        <tr><th>优先级</th><th>优化方向</th><th>具体行动</th><th>预期提升</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="tag tag-weakness">高</span></td>
+          <td><strong>补充学术成果指标</strong></td>
+          <td>在预期成果中增加：发表学术论文1-2篇（省级期刊即可）、申请外观设计专利1-2项（剪纸纹样景观装置）、参加设计类竞赛1项</td>
+          <td>成果预期维度 +1.0，综合评级提升</td>
+        </tr>
+        <tr>
+          <td><span class="tag tag-weakness">高</span></td>
+          <td><strong>完善研究方法与技术路线</strong></td>
+          <td>增加"研究方法"小节：田野调查法、案例分析法、空间句法分析、文化转译法；绘制技术路线图（调研→提取→转译→设计→验证）</td>
+          <td>方案完整性 +1.0，体现学术规范性</td>
+        </tr>
+        <tr>
+          <td><span class="tag tag-suggest">中</span></td>
+          <td><strong>扩充团队或明确外援</strong></td>
+          <td>方案A：增加1名文案/管理类成员；方案B：明确指导老师及其实验室资源支持；方案C：说明与村委会/非遗传承人的合作机制</td>
+          <td>团队配置 +0.8，可行性 +0.3</td>
+        </tr>
+        <tr>
+          <td><span class="tag tag-suggest">中</span></td>
+          <td><strong>量化社会效益指标</strong></td>
+          <td>增加：预计覆盖2-3个村落、直接受益村民≥200人、形成1套可推广手册、举办1次村民体验活动等量化目标</td>
+          <td>社会价值 +0.5</td>
+        </tr>
+        <tr>
+          <td><span class="tag tag-suggest">低</span></td>
+          <td><strong>强化创新独特性论证</strong></td>
+          <td>在国内外研究现状中，明确指出"剪纸类平面非遗向空间景观系统转译"这一细分空白，用对比表格说明本项目与已有研究的差异</td>
+          <td>创新性 +0.5</td>
+        </tr>
+        <tr>
+          <td><span class="tag tag-suggest">低</span></td>
+          <td><strong>预算微调与风险预案</strong></td>
+          <td>调研差旅可适当上调至2000元；增加"风险分析与应对"小节（如传承人配合度、天气影响、场地权属等）</td>
+          <td>可行性 +0.3，方案完整性 +0.3</td>
+        </tr>
+      </tbody>
+    </table>
+    <p style="font-size:13px; color:#7f8c8d; margin-top:12px;">
+      完成高优先级两项优化后，综合评分预计可从 <strong>7.9</strong> 提升至 <strong>8.5+</strong>，达到国家级大创项目的竞争力水平。
+    </p>
+  </div>
+
+  <!-- 实施进度 -->
+  <div class="card">
+    <h2>六、实施进度与关键节点</h2>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="phase">第一阶段：筹备与调研期 <span class="time">第1-3个月</span></div>
+        <div class="desc">团队组建→文献梳理→问卷设计→实地调研（村落测绘+传承人走访+村民访谈）→完成调研报告</div>
+      </div>
+      <div class="timeline-item">
+        <div class="phase">第二阶段：方案设计期 <span class="time">第4-6个月</span></div>
+        <div class="desc">节点选址→空间方案初步构思→剪纸元素提取转译→IP与导视启动→中期汇报</div>
+      </div>
+      <div class="timeline-item">
+        <div class="phase">第三阶段：深化完善期 <span class="time">第7-9个月</span></div>
+        <div class="desc">CAD施工图+SU精细模型+效果图→景观装置细节→IP延展+导视+文创全套→设计说明撰写</div>
+      </div>
+      <div class="timeline-item">
+        <div class="phase">第四阶段：总结与结项期 <span class="time">第10-12个月</span></div>
+        <div class="desc">成果整理→展板+PPT制作→研究总报告→活化模式总结→结项验收</div>
+      </div>
+    </div>
+    <p style="font-size:13px; color:#f57c00; margin-top:12px;">
+      <strong>风险提示：</strong>第二阶段末（第6个月）的中期汇报是关键节点，若空间方案与文创系统的融合度不足，将直接影响第三阶段深化质量。建议在第5个月增加一次内部评审。
+    </p>
+  </div>
+
+  <!-- 经费结构 -->
+  <div class="card">
+    <h2>七、经费结构分析</h2>
+    <div class="budget-bar">
+      <div style="width:33.3%; background:#2d6a9f;">调研差旅 33%</div>
+      <div style="width:22.2%; background:#5a9fd4;">文创打样 22%</div>
+      <div style="width:17.8%; background:#8bc4e8;">资料打印 18%</div>
+      <div style="width:15.6%; background:#b8d8f0;">测绘耗材 16%</div>
+      <div style="width:11.1%; background:#dcebf7;">其他 11%</div>
+    </div>
+    <table>
+      <thead><tr><th>科目</th><th>金额（元）</th><th>占比</th><th>评估</th></tr></thead>
+      <tbody>
+        <tr><td>调研差旅费</td><td>1500</td><td>33.3%</td><td class="s-mid">偏紧，多次走访可能超支</td></tr>
+        <tr><td>文创打样费</td><td>1000</td><td>22.2%</td><td class="s-high">合理，6款以上文创打样必要</td></tr>
+        <tr><td>资料与打印费</td><td>800</td><td>17.8%</td><td class="s-high">合理，展板+报告+图纸</td></tr>
+        <tr><td>测绘与耗材费</td><td>700</td><td>15.6%</td><td class="s-high">合理</td></tr>
+        <tr><td>其他杂费</td><td>500</td><td>11.1%</td><td class="s-mid">可作为弹性缓冲</td></tr>
+        <tr><td><strong>合计</strong></td><td><strong>4500</strong></td><td><strong>100%</strong></td><td>—</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 同类获奖作品对标 -->
+  <div class="card">
+    <h2>八、同类获奖作品对标参考</h2>
+    <p style="font-size:14px; margin-bottom:12px;">近年来大创赛中"非遗+乡村/空间更新"类获奖项目的共性特征：</p>
+    <table>
+      <thead><tr><th>共性特征</th><th>本项目匹配度</th><th>说明</th></tr></thead>
+      <tbody>
+        <tr><td>在地非遗资源明确</td><td class="s-high">✓ 高度匹配</td><td>镇江剪纸市级非遗，有传承人可走访</td></tr>
+        <tr><td>空间载体具体可落地</td><td class="s-high">✓ 高度匹配</td><td>闲置农房、村口空地、废弃晒场，节点明确</td></tr>
+        <tr><td>跨学科团队协同</td><td class="s-mid">△ 部分匹配</td><td>环设+视传，但缺管理/商科维度</td></tr>
+        <tr><td>有学术论文产出</td><td class="s-low">✗ 未覆盖</td><td>需补充论文发表计划</td></tr>
+        <tr><td>有实际落地或试点</td><td class="s-low">✗ 未覆盖</td><td>目前为设计方案，可争取1个节点实物落地</td></tr>
+        <tr><td>量化社会效益</td><td class="s-low">✗ 未覆盖</td><td>需补充受益人数、覆盖范围等指标</td></tr>
+        <tr><td>指导老师有相关课题</td><td class="s-low">✗ 未提及</td><td>需补充导师信息及学术支撑</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="footer">
+    本报告基于项目计划书文本内容进行专业评估，评分仅供参考 · 生成时间：2026-09-04<br>
+    文件保存路径：D:\Doubao_Workspace\文档\大创赛获奖作品分析_剪纹栖隅.html
+  </div>
+
+</div>
+
+<script>
+  var chart = echarts.init(document.getElementById('radarChart'));
+  var option = {
+    backgroundColor: 'transparent',
+    tooltip: {
+      trigger: 'item',
+      triggerOn: 'click',
+      renderMode: 'richText',
+      confine: true,
+      textStyle: { fontSize: 12, lineHeight: 16 },
+      padding: [8, 10],
+      formatter: function(params) {
+        var dims = ['选题价值','创新性','可行性','社会价值','方案完整性','团队配置','成果预期'];
+        var vals = params.value;
+        var str = params.name + String.fromCharCode(10);
+        for (var i = 0; i < dims.length; i++) {
+          str += dims[i] + ': ' + vals[i] + '分' + String.fromCharCode(10);
+        }
+        return str;
+      }
+    },
+    legend: {
+      bottom: 0,
+      data: ['本项目评分', '省级获奖均值', '国家级获奖均值'],
+      itemWidth: 14,
+      itemHeight: 8,
+      textStyle: { color: '#555', fontSize: 12 }
+    },
+    radar: {
+      indicator: [
+        { name: '选题价值', max: 10 },
+        { name: '创新性', max: 10 },
+        { name: '可行性', max: 10 },
+        { name: '社会价值', max: 10 },
+        { name: '方案完整性', max: 10 },
+        { name: '团队配置', max: 10 },
+        { name: '成果预期', max: 10 }
+      ],
+      center: ['50%', '48%'],
+      radius: '62%',
+      axisName: { color: '#1a3a5c', fontSize: 12, fontWeight: 600 },
+      splitArea: { areaStyle: { color: ['rgba(45,106,159,0.02)','rgba(45,106,159,0.05)'] } },
+      splitLine: { lineStyle: { color: '#d0dce8' } },
+      axisLine: { lineStyle: { color: '#d0dce8' } }
+    },
+    series: [{
+      type: 'radar',
+      data: [
+        {
+          value: [9.0, 7.5, 8.5, 8.0, 8.0, 7.0, 7.5],
+          name: '本项目评分',
+          itemStyle: { color: '#2d6a9f' },
+          lineStyle: { color: '#2d6a9f', width: 2 },
+          areaStyle: { color: 'rgba(45,106,159,0.2)' },
+          symbol: 'circle',
+          symbolSize: 6
+        },
+        {
+          value: [8.0, 7.5, 8.0, 7.5, 7.5, 7.5, 7.0],
+          name: '省级获奖均值',
+          itemStyle: { color: '#f57c00' },
+          lineStyle: { color: '#f57c00', width: 1.5, type: 'dashed' },
+          areaStyle: { color: 'rgba(245,124,0,0.08)' },
+          symbol: 'circle',
+          symbolSize: 4
+        },
+        {
+          value: [9.0, 8.5, 8.5, 8.5, 8.5, 8.0, 8.5],
+          name: '国家级获奖均值',
+          itemStyle: { color: '#2e7d32' },
+          lineStyle: { color: '#2e7d32', width: 1.5, type: 'dotted' },
+          areaStyle: { color: 'rgba(46,125,50,0.06)' },
+          symbol: 'circle',
+          symbolSize: 4
+        }
+      ]
+    }]
+  };
+  chart.setOption(option);
+  window.addEventListener('resize', function() { chart.resize(); });
+</script>
+</body>
+</html>

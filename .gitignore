@@ -1,0 +1,29 @@
+# 系统文件
+Thumbs.db
+desktop.ini
+.DS_Store
+
+# 临时文件
+*.tmp
+*.temp
+*.log
+
+# 办公软件临时文件
+~$*.docx
+~$*.doc
+~$*.xlsx
+~$*.pptx
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+.venv/
+venv/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
